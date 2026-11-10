@@ -1,0 +1,43 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="22" height="67" viewBox="0 0 22 67" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="Group 2131327818">
+<g id="Group 2131327816">
+<g id="Rectangle 66">
+<use xlink:href="#stroke0_0_465" fill="#E6DBD7"/>
+<mask id="stroke1_0_465" fill="white">
+<use xlink:href="#stroke0_0_465"/>
+</mask>
+<path d="M11 0C17.0751 0 22 4.77791 22 10.6718V63.1273C22 65.2662 20.2128 67 18.0082 67H3.99177C1.78717 67 0 65.2662 0 63.1273L0 10.6718C0 4.77791 4.92486 0 11 0Z" stroke-width="4" stroke="black" mask="url(#stroke1_0_465)"/>
+</g>
+<g id="Group 2131327815">
+<path id="Vector 234254228" d="M5.39966 49.1355H16.6004" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="#B1948A"/>
+<path id="Vector 234254229" d="M5.39966 39.2569H16.6004" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="#B1948A"/>
+<path id="Vector 234254230" d="M5.39966 29.3782H16.6004" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="#B1948A"/>
+<path id="Vector 234254231" d="M5.39966 19.4996H16.6004" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="#B1948A"/>
+</g>
+<g id="Group 2131327817">
+<g id="Union">
+<use xlink:href="#stroke2_0_465" fill="#FF0000"/>
+<mask id="stroke3_0_465" maskUnits="userSpaceOnUse" x="4.6416" y="9.89607" width="13" height="53" fill="black">
+<rect fill="white" x="4.6416" y="9.89607" width="13" height="53"/>
+<use xlink:href="#stroke2_0_465"/>
+</mask>
+<path d="M10.793 11.8961C11.4805 11.8963 12.0381 12.4536 12.0381 13.1412V52.6295C13.722 53.1427 14.9433 54.6692 14.9434 56.4722C14.9434 58.6962 13.0853 60.4994 10.793 60.4996C8.50047 60.4996 6.6416 58.6963 6.6416 56.4722C6.64164 54.6692 7.86298 53.1427 9.54688 52.6295V13.1412C9.54688 12.4534 10.1052 11.8961 10.793 11.8961Z" stroke-width="4" stroke="black" mask="url(#stroke3_0_465)"/>
+</g>
+<g id="Rectangle 67">
+<use xlink:href="#stroke4_0_465" fill="#E6DBD7"/>
+<mask id="stroke5_0_465" maskUnits="userSpaceOnUse" x="7.54718" y="5.75828" width="7" height="26" fill="black">
+<rect fill="white" x="7.54718" y="5.75828" width="7" height="26"/>
+<use xlink:href="#stroke4_0_465"/>
+</mask>
+<path d="M12.0378 28.8966L12.0387 9.00362C12.0387 8.31585 11.4811 7.75828 10.7934 7.75828C10.1056 7.75828 9.54812 8.31578 9.54809 9.00351L9.54718 28.8966H12.0378Z" stroke-width="4" stroke="black" mask="url(#stroke5_0_465)"/>
+</g>
+</g>
+</g>
+<ellipse id="Ellipse 39" cx="10.1146" cy="56.2935" rx="2.35876" ry="2.39096" fill="#FFA7A7"/>
+</g>
+<defs>
+<path id="stroke0_0_465" d="M0 10.6718C0 4.77791 4.92486 0 11 0C17.0751 0 22 4.77791 22 10.6718V63.1273C22 65.2662 20.2128 67 18.0082 67H3.99177C1.78717 67 0 65.2662 0 63.1273L0 10.6718Z"/>
+<path id="stroke2_0_465" d="M10.793 11.8961C11.4805 11.8963 12.0381 12.4536 12.0381 13.1412V52.6295C13.722 53.1427 14.9433 54.6692 14.9434 56.4722C14.9434 58.6962 13.0853 60.4994 10.793 60.4996C8.50047 60.4996 6.6416 58.6963 6.6416 56.4722C6.64164 54.6692 7.86298 53.1427 9.54688 52.6295V13.1412C9.54688 12.4534 10.1052 11.8961 10.793 11.8961Z"/>
+<path id="stroke4_0_465" d="M9.54809 9.00351C9.54812 8.31578 10.1056 7.75828 10.7934 7.75828C11.4811 7.75828 12.0387 8.31585 12.0387 9.00362L12.0378 28.8966H9.54718L9.54809 9.00351Z"/>
+</defs>
+</svg>

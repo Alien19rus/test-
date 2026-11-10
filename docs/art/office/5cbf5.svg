@@ -1,0 +1,8 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="892.826" height="417.853" viewBox="0 0 892.826 417.853" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="bg">
+<path d="M147.347 280.805L1 416.853H891.826V280.805H147.347Z" fill="#827672"/>
+<path d="M147.347 1V280.805H891.826V1H147.347Z" fill="#B4A9A5"/>
+<path d="M1 416.853L147.347 280.805V1H1V416.853Z" fill="#B4A9A5"/>
+<path d="M1 416.853L147.347 280.805M147.347 1H1V416.853H891.826V280.805M147.347 280.805V1M147.347 280.805H891.826M147.347 1H891.826V280.805" stroke-width="2" stroke="black"/>
+</g>
+</svg>

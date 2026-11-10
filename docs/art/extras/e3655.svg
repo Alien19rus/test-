@@ -1,0 +1,41 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="53.3599" height="158.281" viewBox="0 0 53.3599 158.281" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="Group 2131327818">
+<g id="Group 2131327816">
+<g id="Rectangle 66">
+<use xlink:href="#stroke0_0_85" fill="#E6DBD7"/>
+<mask id="stroke1_0_85" fill="white">
+<use xlink:href="#stroke0_0_85"/>
+</mask>
+<path d="M26.6799 0C41.4149 0 53.3599 11.2874 53.3599 25.211V149.132C53.3599 154.185 49.0251 158.281 43.678 158.281H9.68184C4.33471 158.281 9.05991e-06 154.185 9.05991e-06 149.132L9.05991e-06 25.211C9.05991e-06 11.2874 11.945 0 26.6799 0Z" stroke-width="4" stroke="black" mask="url(#stroke1_0_85)"/>
+</g>
+<g id="Group 2131327815">
+<path id="Vector 234254228" d="M13.18 117H40.3469" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="#B1948A"/>
+<path id="Vector 234254233" d="M18.18 105H35.18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="#B1948A"/>
+<path id="Vector 234254234" d="M18.18 83H35.18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="#B1948A"/>
+<path id="Vector 234254235" d="M18.18 59H35.18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="#B1948A"/>
+<path id="Vector 234254236" d="M18.18 37H35.18" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="#B1948A"/>
+<path id="Vector 234254229" d="M13.18 94H40.3469" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="#B1948A"/>
+<path id="Vector 234254230" d="M13.18 71H40.3469" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="#B1948A"/>
+<path id="Vector 234254231" d="M13.18 48H40.3469" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="#B1948A"/>
+<path id="Vector 234254232" d="M13.18 25H40.3469" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" stroke="#B1948A"/>
+</g>
+<g id="Group 2131327817">
+<g id="Union">
+<use xlink:href="#stroke2_0_85" fill="#FF0000"/>
+<mask id="stroke3_0_85" maskUnits="userSpaceOnUse" x="14.1089" y="16.1024" width="25" height="129" fill="black">
+<rect fill="white" x="14.1089" y="16.1024" width="25" height="129"/>
+<use xlink:href="#stroke2_0_85"/>
+</mask>
+<path d="M26.1763 18.1024C27.8444 18.1024 29.1967 19.4549 29.1968 21.1229V124.333C33.2815 125.545 36.2445 129.15 36.2447 133.41C36.2447 138.664 31.7374 142.923 26.1773 142.924C20.617 142.924 16.1089 138.664 16.1089 133.41C16.1091 129.151 19.0717 125.545 23.1558 124.333V21.1229C23.1559 19.455 24.5084 18.1026 26.1763 18.1024Z" stroke-width="4" stroke="#580000" mask="url(#stroke3_0_85)"/>
+</g>
+<path id="Rectangle 67" d="M23.1822 20.9988C23.1823 19.3426 24.5249 18 26.1811 18C27.8373 18 29.18 19.3427 29.1799 20.9989L29.1777 105.478H23.18L23.1822 20.9988Z" fill="#E6DBD7"/>
+</g>
+</g>
+<circle id="Ellipse 39" cx="26.6799" cy="133.5" r="6.5" fill="#C30000"/>
+<circle id="Ellipse 40" cx="23.1799" cy="129" r="3" fill="#FF9F9F"/>
+</g>
+<defs>
+<path id="stroke0_0_85" d="M9.05991e-06 25.211C9.05991e-06 11.2874 11.945 0 26.6799 0C41.4149 0 53.3599 11.2874 53.3599 25.211V149.132C53.3599 154.185 49.0251 158.281 43.678 158.281H9.68184C4.33471 158.281 9.05991e-06 154.185 9.05991e-06 149.132L9.05991e-06 25.211Z"/>
+<path id="stroke2_0_85" d="M26.1763 18.1024C27.8444 18.1024 29.1967 19.4549 29.1968 21.1229V124.333C33.2815 125.545 36.2445 129.15 36.2447 133.41C36.2447 138.664 31.7374 142.923 26.1773 142.924C20.617 142.924 16.1089 138.664 16.1089 133.41C16.1091 129.151 19.0717 125.545 23.1558 124.333V21.1229C23.1559 19.455 24.5084 18.1026 26.1763 18.1024Z"/>
+</defs>
+</svg>

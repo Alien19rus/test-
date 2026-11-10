@@ -1,0 +1,17 @@
+{
+ "loopAt": 0.15,
+ "length": {
+  "phone": 2.7,
+  "mobile": 2.5,
+  "printer": 9.0,
+  "keyboard": 12.0,
+  "pc": 8.4,
+  "lamp": 8.0,
+  "ac": 12.0,
+  "clock": 4.0,
+  "street": 18.0,
+  "cat": 1.4,
+  "room": 32.0,
+  "pulse": 1.5
+ }
+}

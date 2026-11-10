@@ -1,0 +1,18 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="93.8981" height="25.215" viewBox="0 0 93.8981 25.215" fill="none" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<g id="Vector 64" filter="url(#filter0_f_0_4)">
+<use xlink:href="#stroke0_0_4" fill="#5CCEFF"/>
+<mask id="stroke1_0_4" maskUnits="userSpaceOnUse" x="3.72738" y="4" width="87" height="18" fill="black">
+<rect fill="white" x="3.72738" y="4" width="87" height="18"/>
+<use xlink:href="#stroke0_0_4"/>
+</mask>
+<path d="M7.03062 16.977L9.28795 7.76207C9.39755 7.31466 9.79859 7 10.2592 7H81.3784C81.7601 7 82.1085 7.21728 82.2765 7.56004L86.7911 16.775C87.1166 17.4394 86.6329 18.215 85.8931 18.215H8.0019C7.35329 18.215 6.8763 17.607 7.03062 16.977Z" stroke-width="6" stroke-linecap="round" stroke-linejoin="round" stroke="#5CCEFF" mask="url(#stroke1_0_4)"/>
+</g>
+<defs>
+<filter id="filter0_f_0_4" x="2.38419e-07" y="0" width="93.8981" height="25.215" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="2" result="effect1_foregroundBlur_0_4"/>
+</filter>
+<path id="stroke0_0_4" d="M9.28795 7.76207L7.03062 16.977C6.8763 17.607 7.35329 18.215 8.0019 18.215H85.8931C86.6329 18.215 87.1166 17.4394 86.7911 16.775L82.2765 7.56004C82.1085 7.21728 81.7601 7 81.3784 7H10.2592C9.79859 7 9.39755 7.31466 9.28795 7.76207Z"/>
+</defs>
+</svg>

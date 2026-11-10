@@ -1,0 +1,27 @@
+<svg preserveAspectRatio="none" overflow="visible" style="display: block;" width="640" height="20" viewBox="0 0 640 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="electrisity">
+<path id="Rectangle 45" d="M1 1H639V19H1V1Z" fill="#E6DBD7" stroke-width="2" stroke="#9A8D88"/>
+<path id="Rectangle 44" d="M1 1H639V19H1V1Z" fill="#E6DBD7" stroke-width="2" stroke="#9A8D88"/>
+<g id="Group 2131327797">
+<rect id="Rectangle 44_2" x="108.258" y="1" width="56.9741" height="18" rx="5" fill="#E6DBD7" stroke-width="2" stroke="#9A8D88"/>
+<g id="Ellipse 16">
+<ellipse cx="149.709" cy="9.99078" rx="8.98465" ry="8.98859" fill="#E6DBD7"/>
+<mask id="stroke0_0_837" fill="white">
+<path d="M158.694 9.99078C158.694 14.955 154.671 18.9794 149.709 18.9794C144.747 18.9794 140.725 14.955 140.725 9.99078C140.725 5.02652 144.747 1.0022 149.709 1.0022C154.671 1.0022 158.694 5.02652 158.694 9.99078Z"/>
+</mask>
+<ellipse cx="149.709" cy="9.99078" rx="8.98465" ry="8.98859" stroke-width="4" stroke="#9A8D88" mask="url(#stroke0_0_837)"/>
+</g>
+<g id="Ellipse 17">
+<ellipse cx="124.68" cy="9.99078" rx="8.98465" ry="8.98859" fill="#E6DBD7"/>
+<mask id="stroke1_0_837" fill="white">
+<path d="M133.665 9.99078C133.665 14.955 129.642 18.9794 124.68 18.9794C119.718 18.9794 115.696 14.955 115.696 9.99078C115.696 5.02652 119.718 1.0022 124.68 1.0022C129.642 1.0022 133.665 5.02652 133.665 9.99078Z"/>
+</mask>
+<ellipse cx="124.68" cy="9.99078" rx="8.98465" ry="8.98859" stroke-width="4" stroke="#9A8D88" mask="url(#stroke1_0_837)"/>
+</g>
+<ellipse id="Ellipse 18" cx="153.595" cy="9.86243" rx="2.08014" ry="2.08105" fill="#9A8D88"/>
+<ellipse id="Ellipse 20" cx="128.338" cy="9.86243" rx="2.08014" ry="2.08105" fill="#9A8D88"/>
+<ellipse id="Ellipse 19" cx="146.234" cy="9.86243" rx="2.08014" ry="2.08105" fill="#9A8D88"/>
+<ellipse id="Ellipse 21" cx="120.977" cy="9.86243" rx="2.08014" ry="2.08105" fill="#9A8D88"/>
+</g>
+</g>
+</svg>
