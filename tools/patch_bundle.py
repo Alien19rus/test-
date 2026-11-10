@@ -57,6 +57,18 @@ sub("L=()=>{Be(null),O?.closeEgg(),S(q=>q+1)}",
 sub('"data-object":"washer",className:"absolute h-[147.635px] left-[-37px] top-[162px] w-[100.402px]"',
     '"data-object":"washer",className:"absolute h-[147.635px] left-[-37px] top-[162px] w-[100.402px] "+(o.elapsed<100?"washer-pass":"washer-stay")')
 
+# предметы в покое не светятся: «active» только пока источник звучит;
+# после клика телефон моргает диодами и гаснет, у принтера выезжает лист
+sub('function On(v,r){return(v.confirmedUntil[r]??0)>v.visualTime?r==="printer"?"after click":"Default":"active"}',
+    'function On(v,r){const c=(v.confirmedUntil[r]??0)-v.visualTime;'
+    'return c>0?r==="printer"?"after click":r==="phone"&&Math.floor(c/.11)%2===0?"active":"Default"'
+    ':v.active.has(r)?"active":"Default"}')
+sub('.map(([q])=>q).join(",")}`',
+    '.map(([q])=>q).join(",")}|${[...O.active].join()}|'
+    '${Object.values(O.confirmedUntil).some(q=>q>O.visualTime)?Math.floor(O.visualTime/.055):0}`')
+# кот машет лапой, пока стучит (ТЗ, раздел 14)
+sub('${O.inArrival?"arrival":""} ', '${O.inArrival?"arrival":""} ${O.active.has("cat")?"cat-on":""} ')
+
 css += open(os.path.join(ROOT, "tools", "fx.css"), encoding="utf8").read()
 open(os.path.join(A, "game.js"), "w", encoding="utf8").write(js)
 open(os.path.join(A, "game.css"), "w", encoding="utf8").write(css)

@@ -12,6 +12,7 @@
       if (res === "break") return;
       const paw = scene('[data-object="cat"] [data-node-id="1665:2931"]');
       if (!paw) return;
+      paw.getAnimations().forEach((a) => a.cancel());
       paw.style.transformOrigin = "30% 95%";
       play(paw, [0, -30, 16, -18, 8, -4, 0].map((d) => ({ rotate: d + "deg" })), { duration: 720, easing: "ease-in-out" });
     },
@@ -70,11 +71,56 @@
     },
   };
 
+  // Общий отклик на клик (ТЗ, раздел 14): высокий предмет качается вбок,
+  // висящий на стене — качается на креплении, лежащий — проседает вниз.
+  const TILT = new Set(["kettle", "thermometer", "boss", "pc", "cat", "radio", "cup", "printer", "belt", "washer"]);
+  const SWING = new Set(["plan", "hammer", "clock", "lamp-body", "ac-body", "sticker", "lamp", "ac", "street"]);
+  const bob = (id) => {
+    const el = obj(id);
+    if (!el) return;
+    if (SWING.has(id)) {
+      el.style.transformOrigin = "50% 0";
+      play(el, [0, 5, -3.5, 2, 0].map((d) => ({ rotate: d + "deg" })), { duration: 420, easing: "ease-out" });
+    } else if (TILT.has(id)) {
+      el.style.transformOrigin = "50% 100%";
+      play(el, [
+        { rotate: "0deg", translate: "0 0" },
+        { rotate: "6deg", translate: "2px 0" },
+        { rotate: "-3.5deg", translate: "-1px 0" },
+        { rotate: "0deg", translate: "0 0" },
+      ], { duration: 320, easing: "ease-out" });
+    } else {
+      el.style.transformOrigin = "50% 100%";
+      play(el, [
+        { translate: "0 0", scale: "1 1" },
+        { translate: "0 3px", scale: "1.04 .92" },
+        { translate: "0 -1px", scale: ".99 1.03" },
+        { translate: "0 0", scale: "1 1" },
+      ], { duration: 280, easing: "ease-out" });
+    }
+  };
+  // Верный клик по основному источнику: подсветка/индикатор гаснет плавно.
+  const MAIN = new Set(["phone", "mobile", "printer", "keyboard", "pc"]);
+  const OWN = new Set(["popit"]);
+
   window.__fx = (id, res, game) => {
     window.__fxGame = game;
-    if (reduced() || !onClick[id]) return;
+    if (reduced()) return;
     // после общего «качка» сборки, чтобы наш отклик был главным
-    requestAnimationFrame(() => onClick[id](res));
+    requestAnimationFrame(() => {
+      const own = OWN.has(id) || (id === "cup" && res !== "touch") || (id === "cat" && res === "success");
+      if (!own) bob(id);
+      if (onClick[id]) onClick[id](res);
+      if (MAIN.has(id) && res === "success")
+        play(obj(id), [{ filter: "brightness(1.5) saturate(1.4)" }, { filter: "brightness(.92)", offset: 0.6 }, { filter: "brightness(1)" }], { duration: 520, easing: "ease-out" });
+      if (game.lastMiss) {
+        const who = obj("character");
+        play(who, [
+          { translate: "0 0", rotate: "0deg" }, { translate: "4px -3px", rotate: "3deg" },
+          { translate: "-3px 0", rotate: "-2deg" }, { translate: "2px -1px", rotate: "1deg" }, { translate: "0 0", rotate: "0deg" },
+        ], { duration: 300, easing: "ease-out" });
+      }
+    });
   };
 
   // Окно находки улетает за кадр перед закрытием.

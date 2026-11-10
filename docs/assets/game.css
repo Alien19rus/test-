@@ -164,3 +164,66 @@
     animation: none !important;
   }
 }
+
+/* Кот машет лапой, пока стучит */
+.cat-on .office-render [data-object="cat"] [data-node-id="1665:2931"] {
+  transform-origin: 30% 95%;
+  animation: paw-wave 0.7s ease-in-out infinite;
+}
+@keyframes paw-wave {
+  0%, 100% { rotate: 0deg; }
+  45% { rotate: -26deg; }
+  60% { rotate: -22deg; }
+}
+
+/* Шкала стресса: горизонтальная, внутри кадра слева сверху (как в макете) */
+.game-shell {
+  position: relative;
+  container-type: inline-size;
+  gap: 0;
+}
+.game-shell .room {
+  width: 100%;
+}
+.game-shell .stress-meter {
+  position: absolute;
+  z-index: 3;
+  left: 0;
+  top: 0;
+  margin: 0;
+  align-self: auto;
+  width: max(1.83cqw, 9px);
+  height: 32.6cqw;
+  min-height: 0;
+  max-height: none;
+  border-width: max(0.2cqw, 1.5px);
+  border-radius: 1.4cqw;
+  transform-origin: 0 0;
+  transform: translate(calc(3.9cqw + 32.6cqw), 1.6cqw) rotate(90deg);
+}
+.game-shell .stress-fill {
+  left: 15%;
+  right: 15%;
+  bottom: 4%;
+  max-height: 95%;
+  border-radius: 1cqw;
+}
+.game-shell .stress-damage {
+  left: 12%;
+  right: 12%;
+}
+.game-shell .stress-meter > img {
+  width: max(3.1cqw, 16px);
+  height: max(3.1cqw, 16px);
+  left: 50%;
+  bottom: -1.9cqw;
+  translate: -50% 0;
+  rotate: -90deg;
+}
+
+/* Окно находки: поверх размытой сцены, а не сплошной заливки */
+.opaque-overlay.egg-overlay {
+  background: rgba(28, 20, 53, 0.72);
+  -webkit-backdrop-filter: blur(14px) saturate(0.8);
+  backdrop-filter: blur(14px) saturate(0.8);
+}
