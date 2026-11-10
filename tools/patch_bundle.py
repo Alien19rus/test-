@@ -91,18 +91,18 @@ sub('children:s.jsx(gx,{state:On(o,"printer"),className:"relative size-full"})',
     'children:[s.jsx(gx,{state:On(o,"printer"),className:"relative size-full"},"p"),'
     'o.printed>0&&s.jsx("div",{className:"fx-sheet",children:s.jsx("img",{alt:"",src:xx})},"s"+o.printed)]')
 # мойщик: сначала пишет «БЕГИТЕ ГЛУПЦЫ», потом моет; зона клика — и скребок, и надпись
-sub('O.found.has("washer")&&s.jsxs("div",{className:"window-message",',
-    '(O.found.has("washer")||O.washerVisible)&&s.jsxs("div",{className:"window-message"+'
-    '(O.found.has("washer")?" kept":O.elapsed<100?" writing-pass":" writing-stay"),')
+# (обёртка fx-glass обрезает пятно по стеклу, чтобы оно не налезало на монитор и кота)
+sub('O.found.has("washer")&&s.jsxs("div",{className:"window-message",children:["БЕГИТЕ",s.jsx("br",{}),"ГЛУПЦЫ"]})',
+    '(O.found.has("washer")||O.washerVisible)&&s.jsx("div",{className:"fx-glass",children:'
+    's.jsx("div",{className:"window-message"+'
+    '(O.found.has("washer")?" kept":O.elapsed<100?" writing-pass":" writing-stay"),'
+    'children:s.jsxs("span",{children:["БЕГИТЕ",s.jsx("br",{}),"ГЛУПЦЫ"]})})})')
 sub('{id:"washer",label:"Мойщик окон",x:8,y:183,w:60,h:132}',
     '{id:"washer",label:"Мойщик окон",x:0,y:150,w:72,h:170}')
 # в окне находки надпись читается нормально, не зеркально
 sub('"-scale-x-100 flex-none h-[hypot(9.70461cqw,72.1583cqh)] rotate-[-11.51deg]',
     '"flex-none h-[hypot(9.70461cqw,72.1583cqh)] rotate-[11.51deg]')
 
-# надпись на стекле — в отдельном span, под ней запотевшее пятно
-sub('children:["БЕГИТЕ",s.jsx("br",{}),"ГЛУПЦЫ"]})',
-    'children:s.jsxs("span",{children:["БЕГИТЕ",s.jsx("br",{}),"ГЛУПЦЫ"]})})')
 # дверь босса приоткрывается, когда звучат три основных источника (условие пасхалки)
 sub('${O.inArrival?"arrival":""} ', '${O.inArrival?"arrival":""} ${O.mainCount===3&&!O.found.has("boss")?"boss-ready":""} ')
 # косяк остаётся на месте (неподвижная копия), открывается только полотно двери

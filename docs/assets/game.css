@@ -549,3 +549,11 @@
 .found-boss .office-render [data-object="boss"] {
   transform: scaleX(0.92) skewY(-2deg);
 }
+
+/* Запотевшее пятно обрезано по стеклу: не налезает на монитор, кота и раму */
+.fx-glass {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  clip-path: polygon(14px 150px, 71px 150px, 71px 239px, 51px 256px, 51px 271px, 14px 329px);
+}
