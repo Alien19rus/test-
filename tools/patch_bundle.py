@@ -105,7 +105,11 @@ sub('children:["БЕГИТЕ",s.jsx("br",{}),"ГЛУПЦЫ"]})',
     'children:s.jsxs("span",{children:["БЕГИТЕ",s.jsx("br",{}),"ГЛУПЦЫ"]})})')
 # дверь босса приоткрывается, когда звучат три основных источника (условие пасхалки)
 sub('${O.inArrival?"arrival":""} ', '${O.inArrival?"arrival":""} ${O.mainCount===3&&!O.found.has("boss")?"boss-ready":""} ')
-sub('s.jsx("div",{"data-object":"boss"', 's.jsx("div",{className:"fx-doorway"}),s.jsx("div",{"data-object":"boss"')
+# косяк остаётся на месте (неподвижная копия), открывается только полотно двери
+sub('s.jsx("div",{"data-object":"boss"',
+    's.jsx("div",{className:"fx-doorframe absolute h-[213px] left-[774px] top-[60px] w-[132px]",'
+    'children:s.jsx(lb,{className:"relative size-full"})}),'
+    's.jsx("div",{className:"fx-doorway"}),s.jsx("div",{"data-object":"boss"')
 
 css += open(os.path.join(ROOT, "tools", "fx.css"), encoding="utf8").read()
 open(os.path.join(A, "game.js"), "w", encoding="utf8").write(js)
