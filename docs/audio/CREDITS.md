@@ -10,8 +10,8 @@
 | mobile | 1034 Mobile vibrator without protective shell + синтезированный нейтральный «блип» |
 | printer | 0169 Inkjet printer |
 | keyboard | 1734 Quick Keyboard |
-| pc | 0125 Computer 1 (Ventilation) |
-| lamp | 1091 Electric meter (гул трансформатора) + синтезированные гармоники 100 Гц |
+| pc | 0125 + 0126 Computer (Ventilation), с плавающими оборотами + синтезированный свист лопастей |
+| lamp | синтезированное гудение 100 Гц с гармониками + 1091 Electric meter (дроссель) |
 | ac | 1471 Air-conditioner |
 | clock | 0007 Clock |
 | street | 2722 Aubervilliers Street |

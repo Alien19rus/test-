@@ -24,7 +24,7 @@ def sub(old, new, count=1):
 loops = json.load(open(os.path.join(ROOT, "docs", "audio", "loops.json")))
 gains = {
     "phone": .42, "printer": .40, "keyboard": 1.0, "mobile": .5, "pc": .34,
-    "lamp": .085, "ac": .10, "clock": .085, "street": .02, "cat": .18,
+    "lamp": .11, "ac": .10, "clock": .085, "street": .02, "cat": .18,
     "room": .01, "pulse": .08,
     "sip-1": .3, "sip-2": .3, "empty-cup": .28, "break": .34,
     "pop-1": .3, "pop-2": .3, "pop-3": .3, "pop-4": .3, "pop-5": .3, "pop-6": .3,
@@ -68,6 +68,21 @@ sub('.map(([q])=>q).join(",")}`',
     '${Object.values(O.confirmedUntil).some(q=>q>O.visualTime)?Math.floor(O.visualTime/.055):0}`')
 # кот машет лапой, пока стучит (ТЗ, раздел 14)
 sub('${O.inArrival?"arrival":""} ', '${O.inArrival?"arrival":""} ${O.active.has("cat")?"cat-on":""} ')
+
+# игра доступна слою анимаций сразу (часы, шкала), а не только после клика
+sub("r(new O7(Math.random,q))", "r(window.__fxGame=new O7(Math.random,q))")
+# пауза, пока сцена не дорисуется: время игры стоит (см. fx.js)
+sub("Re.tick(zt)", "Re.tick(window.__hold?0:zt)")
+# онбординг идёт вдвое спокойнее
+sub("this.introElapsed=Math.min(we.complete,this.introElapsed+d)",
+    "this.introElapsed=Math.min(we.complete,this.introElapsed+d*.5)")
+# время суток: все четыре вида за окном лежат слоями и плавно перетекают
+sub('children:r==="день"?s.jsx(Px,{}):r==="вечер"?s.jsx(ch,{}):r==="поздний вечер"?s.jsx(xh,{}):s.jsx(ab,{className:"relative size-full"})})',
+    'children:[["утро",s.jsx(ab,{className:"relative size-full"})],["день",s.jsx(Px,{})],["вечер",s.jsx(ch,{})],["поздний вечер",s.jsx(xh,{})]]'
+    '.map(([k,el],i)=>s.jsx("div",{className:"fx-sky"+(k===r?" fx-on":""),children:el},i))})')
+# освещение кабинета — так же, слоями
+sub('s.jsx(zx,{propValue:r,className:"-translate-x-1/2 -translate-y-1/2 absolute h-[402px] left-1/2 mix-blend-soft-light opacity-40 overflow-clip top-1/2 w-[874px]"})',
+    '["утро","день","вечер","поздний вечер"].map((k,i)=>s.jsx(zx,{propValue:k,className:"-translate-x-1/2 -translate-y-1/2 absolute h-[402px] left-1/2 mix-blend-soft-light overflow-clip top-1/2 w-[874px] fx-light"+(k===r?(i===3?" fx-on-80":" fx-on-40"):"")},"l"+i))')
 
 css += open(os.path.join(ROOT, "tools", "fx.css"), encoding="utf8").read()
 open(os.path.join(A, "game.js"), "w", encoding="utf8").write(js)

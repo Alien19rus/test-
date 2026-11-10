@@ -184,21 +184,39 @@ loop("printer", norm(seamless(cut(x, 4.6, 14.4), 9.0, 0.6), -21))
 x = load("1734", "highpass=f=200")
 loop("keyboard", norm(seamless(cut(x, 10.0, 22.6), 12.0, 0.4), -23))
 
-# Системник: вентиляторы компьютера, середина приподнята для динамика телефона.
-x = load("0125", "highpass=f=60,equalizer=f=1100:t=q:w=0.9:g=7,equalizer=f=2600:t=q:w=1.2:g=4")
-loop("pc", norm(seamless(cut(x, 0.3, 9.9), 8.4, 1.1), -21))
+# Системник: кулер, который раскручивается под нагрузкой (как у видеокарты):
+# запись вентиляторов читается с плавающей скоростью + свист лопастей.
+L = 9.0
+fan = np.concatenate([load("0125", "highpass=f=120"), load("0126", "highpass=f=120")] * 3)
+t = np.arange(n(L + 1.2)) / SR
+ph = (t % L) / L
+# обороты: разгон → держит → чуть сбрасывает → снова разгон
+rate = 1.45 + 0.42 * np.sin(2 * np.pi * (ph - 0.18)) + 0.10 * np.sin(4 * np.pi * ph + 1.0)
+pos = np.cumsum(rate)
+pos = pos[pos < len(fan) - 2]
+i0 = pos.astype(int)
+air = fan[i0] + (fan[i0 + 1] - fan[i0]) * (pos - i0)
+rate = rate[:len(air)]
+whine_ph = 2 * np.pi * np.cumsum(rate * 610.0) / SR
+whine = np.sin(whine_ph) + 0.45 * np.sin(2 * whine_ph + 0.6) + 0.2 * np.sin(3 * whine_ph + 1.1)
+air = band(norm(air, -21), 180, None) * (0.75 + 0.25 * (rate - 1.0))
+mix = air + norm(whine, -37) * (rate - 0.85)
+loop("pc", norm(seamless(mix, L, 1.0), -21))
 
 # ---------- фоновые источники ----------
 
-# Лампа: гул трансформатора + дребезг гармоник 100 Гц с неровным мерцанием.
+# Лампа: гудение люминесцентной — сетевой гул 100 Гц с гармониками
+# и «зудящий» призвук дросселя, пульсирующий с той же частотой.
 L = 8.0
-hum = seamless(cut(load("1091", "highpass=f=350,lowpass=f=4200"), 2.0, 11.2), L, 1.0)
 t = np.arange(n(L)) / SR
-buzz100 = sum(np.sin(2 * np.pi * 100 * k * t + rng.uniform(0, 6.28)) / k ** 0.7
-              for k in range(4, 46))
-flutter = 1 + sum(0.07 * np.sin(2 * np.pi * (c / L) * t + rng.uniform(0, 6.28))
-                  for c in (3, 7, 13, 29, 53))
-lamp = norm(hum, -21) + norm(buzz100 * flutter, -24)
+hum = sum(np.sin(2 * np.pi * 100 * k * t + rng.uniform(0, 6.28)) / k ** 1.15 for k in range(1, 36))
+hum += 0.35 * np.sin(2 * np.pi * 50 * t)
+gate = np.maximum(0, np.sin(2 * np.pi * 100 * t)) ** 3
+zzz = band(rng.standard_normal(n(L)), 1400, 5200)
+zzz[:n(0.05)] *= np.linspace(0, 1, n(0.05)); zzz[-n(0.05):] *= np.linspace(1, 0, n(0.05))
+drift = 1 + sum(0.04 * np.sin(2 * np.pi * (c / L) * t + rng.uniform(0, 6.28)) for c in (1, 3, 5))
+ballast = seamless(cut(load("1091", "highpass=f=300,lowpass=f=3000"), 2.0, 11.2), L, 1.0)
+lamp = norm(hum * drift, -21) + norm(zzz * gate, -33) + norm(ballast, -34)
 loop("lamp", norm(lamp, -21))
 
 # Кондиционер: ровный поток воздуха.

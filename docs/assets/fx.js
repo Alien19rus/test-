@@ -51,13 +51,6 @@
       if (el) el.style.transformOrigin = "50% 0";
       play(el, [0, 11, -8, 5, -3, 0].map((d) => ({ rotate: d + "deg" })), { duration: 900, easing: "ease-out" });
     },
-    // Окно: створка захлопнулась.
-    street(res) {
-      if (res !== "success") return;
-      const el = obj("street");
-      if (el) el.style.transformOrigin = "0 50%";
-      play(el, [{ scale: "1.07 1" }, { scale: ".985 1" }, { scale: "1 1" }], { duration: 300, easing: "ease-out" });
-    },
     // Выключатель: лампа гаснет с мерцанием.
     lamp(res) {
       if (res !== "success") return;
@@ -73,12 +66,16 @@
 
   // Общий отклик на клик (ТЗ, раздел 14): высокий предмет качается вбок,
   // висящий на стене — качается на креплении, лежащий — проседает вниз.
-  const TILT = new Set(["kettle", "thermometer", "boss", "pc", "cat", "radio", "cup", "printer", "belt", "washer"]);
-  const SWING = new Set(["plan", "hammer", "clock", "lamp-body", "ac-body", "sticker", "lamp", "ac", "street"]);
+  const TILT = new Set(["kettle", "thermometer", "pc", "cat", "radio", "cup", "printer", "belt", "washer"]);
+  const SWING = new Set(["plan", "hammer", "clock", "lamp-body", "ac-body", "sticker", "ac"]);
+  // массивное и вмурованное (окно, дверь, выключатель) не качается — только чуть подаётся
+  const NUDGE = { street: "1px 0", boss: "1px 0", lamp: "0 1px" };
   const bob = (id) => {
     const el = obj(id);
     if (!el) return;
-    if (SWING.has(id)) {
+    if (NUDGE[id]) {
+      play(el, [{ translate: "0 0" }, { translate: NUDGE[id] }, { translate: "0 0" }], { duration: 140, easing: "ease-out" });
+    } else if (SWING.has(id)) {
       el.style.transformOrigin = "50% 0";
       play(el, [0, 5, -3.5, 2, 0].map((d) => ({ rotate: d + "deg" })), { duration: 420, easing: "ease-out" });
     } else if (TILT.has(id)) {
@@ -158,11 +155,44 @@
           : [{ scale: "1 1" }, { scale: ".96 1.04" }, { scale: "1 1" }], { duration: up ? 460 : 380, easing: "ease-out" });
         play(document.querySelector(".stress-meter"), [{ scale: 1 }, { scale: up ? 1.12 : 0.94 }, { scale: 1 }], { duration: 380 });
       }
-      if (now.period !== last.period && !now.arrival)
-        play(document.querySelector(".office-render"), [{ filter: "brightness(1)" }, { filter: "brightness(.84)" }, { filter: "brightness(1)" }], { duration: 1100, easing: "ease-in-out" });
       if (last.dark && !now.dark && now.arrival)
         play(document.querySelector(".lamp-shade"), [{ opacity: 0.2 }, { opacity: 0 }, { opacity: 0.22 }, { opacity: 0.04 }, { opacity: 0.18 }, { opacity: 0 }], { duration: 520 });
     }
     last = now;
   }, 90);
+
+  // Каждый кадр: стрелки часов и шкала стресса идут плавно, без рывков.
+  const frame = () => {
+    const g = window.__fxGame;
+    const shell = document.querySelector(".game-shell");
+    if (g && shell) {
+      shell.style.setProperty("--clock-minutes", g.clockMinutes);
+      shell.style.setProperty("--stress", Math.max(0, Math.min(100, g.stress)).toFixed(2));
+    }
+    requestAnimationFrame(frame);
+  };
+  requestAnimationFrame(frame);
+
+  // Вход на уровень: ждём, пока сцена полностью дорисуется, показываем тёмный
+  // пустой кабинет и только потом пускаем время (персонаж входит, включает свет).
+  let heldShell = null;
+  const root = document.documentElement;
+  setInterval(async () => {
+    const shell = document.querySelector(".game-shell");
+    if (!shell) { heldShell = null; return; }
+    if (shell === heldShell) return;
+    heldShell = shell;
+    window.__hold = true;
+    root.classList.add("fx-hold");
+    const imgs = [...shell.querySelectorAll("img")];
+    await Promise.race([
+      Promise.all(imgs.map((i) => (i.decode ? i.decode().catch(() => {}) : null))),
+      new Promise((r) => setTimeout(r, 6000)),
+    ]);
+    await new Promise((r) => setTimeout(r, 350));
+    root.classList.remove("fx-hold");           // кабинет проявляется из темноты
+    const intro = window.__fxGame && window.__fxGame.inArrival;
+    await new Promise((r) => setTimeout(r, intro ? 1900 : 700)); // пауза в пустом тёмном кабинете
+    if (heldShell === shell) window.__hold = false;
+  }, 50);
 })();
