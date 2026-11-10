@@ -100,6 +100,13 @@ sub('{id:"washer",label:"Мойщик окон",x:8,y:183,w:60,h:132}',
 sub('"-scale-x-100 flex-none h-[hypot(9.70461cqw,72.1583cqh)] rotate-[-11.51deg]',
     '"flex-none h-[hypot(9.70461cqw,72.1583cqh)] rotate-[11.51deg]')
 
+# надпись на стекле — в отдельном span, под ней запотевшее пятно
+sub('children:["БЕГИТЕ",s.jsx("br",{}),"ГЛУПЦЫ"]})',
+    'children:s.jsxs("span",{children:["БЕГИТЕ",s.jsx("br",{}),"ГЛУПЦЫ"]})})')
+# дверь босса приоткрывается, когда звучат три основных источника (условие пасхалки)
+sub('${O.inArrival?"arrival":""} ', '${O.inArrival?"arrival":""} ${O.mainCount===3&&!O.found.has("boss")?"boss-ready":""} ')
+sub('s.jsx("div",{"data-object":"boss"', 's.jsx("div",{className:"fx-doorway"}),s.jsx("div",{"data-object":"boss"')
+
 css += open(os.path.join(ROOT, "tools", "fx.css"), encoding="utf8").read()
 open(os.path.join(A, "game.js"), "w", encoding="utf8").write(js)
 open(os.path.join(A, "game.css"), "w", encoding="utf8").write(css)

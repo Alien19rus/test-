@@ -180,28 +180,6 @@
   };
   requestAnimationFrame(frame);
 
-  // Удавы в полосах над и под кадром — только когда полосы достаточно высокие.
-  const snakes = document.createElement("div");
-  snakes.className = "fx-snakes";
-  snakes.setAttribute("aria-hidden", "true");
-  snakes.innerHTML = '<img class="fx-snake-top" src="./art/snakes/noise.png" alt=""><img class="fx-snake-bottom" src="./art/snakes/think.png" alt="">';
-  const placeSnakes = () => {
-    const room = document.querySelector(".game-shell .room");
-    if (!snakes.parentNode && document.body) document.body.appendChild(snakes);
-    if (!room || document.querySelector(".opaque-overlay")) { snakes.classList.remove("on"); return; }
-    const r = room.getBoundingClientRect();
-    const bar = Math.min(r.top, innerHeight - r.bottom);
-    const on = bar >= 84;
-    snakes.classList.toggle("on", on);
-    if (!on) return;
-    const size = Math.min(bar - 10, 190);
-    const [top, bottom] = snakes.children;
-    top.style.cssText = `height:${size}px;left:${r.left + r.width * 0.56}px;top:${r.top - size + size * 0.07}px`;
-    bottom.style.cssText = `height:${size}px;left:${r.left + r.width * 0.2}px;top:${r.bottom + (bar - size) / 2}px`;
-  };
-  setInterval(placeSnakes, 120);
-  addEventListener("resize", placeSnakes);
-
   // Вход на уровень: ждём, пока сцена полностью дорисуется, показываем тёмный
   // пустой кабинет и только потом пускаем время (персонаж входит, включает свет).
   let heldShell = null;
