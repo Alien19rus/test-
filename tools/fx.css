@@ -343,3 +343,102 @@
   0%, 100% { translate: 0 0; }
   50% { translate: 5px -24px; }
 }
+
+/* ===== Правки 4 ===== */
+
+/* Шкала: заливка от самого края, мордочка стоит на её конце */
+.game-shell .stress-fill {
+  bottom: 1.5%;
+  height: calc(var(--stress, 0) * 0.965%) !important;
+}
+.game-shell .stress-meter > img {
+  width: max(2.8cqw, 15px);
+  height: max(2.8cqw, 15px);
+  bottom: calc(1.5% + var(--stress, 0) * 0.965% - max(1.4cqw, 7.5px));
+}
+
+/* Принтер: лист выезжает в лоток и остаётся */
+.fx-sheet {
+  position: absolute;
+  inset: 73.98% 39.32% 7.24% 0.21%;
+  clip-path: inset(-8% -4% -8% -4%);
+  pointer-events: none;
+}
+.fx-sheet img {
+  position: absolute;
+  inset: -4.75% -1.44%;
+  width: 102.88%;
+  height: 109.5%;
+  max-width: none;
+  animation: sheet-out 1.1s 0.18s cubic-bezier(0.25, 0.7, 0.3, 1) both;
+}
+@keyframes sheet-out {
+  from { translate: 46% -92%; }
+  to { translate: 0 0; }
+}
+
+/* Надпись на стекле: лежит вдоль окна, как в макете */
+.window-message {
+  left: 40px;
+  top: 262px;
+  transform: translate(-50%, -50%) rotate(-74deg) scaleX(-1);
+  font-size: 11.5px;
+  line-height: 1.12;
+  text-align: center;
+  white-space: nowrap;
+  color: #f1f6ea;
+  opacity: 0.92;
+  animation: none;
+}
+.window-message.writing-pass {
+  animation: scrawl2 1.5s 0.7s steps(14) both, msg-out 0.5s 4.9s ease-in forwards;
+}
+.window-message.writing-stay {
+  animation: scrawl2 1.5s 1.3s steps(14) both;
+}
+@keyframes scrawl2 {
+  from { clip-path: inset(0 0 0 100%); }
+  to { clip-path: inset(0 0 0 0); }
+}
+@keyframes msg-out {
+  to { opacity: 0; }
+}
+/* Скребок: зашёл → пишет (чуть водит) → моет → уходит */
+@keyframes washer-pass2 {
+  0% { translate: -46px 92px; }
+  10% { translate: 0 0; }
+  16% { translate: 2px -5px; }
+  22% { translate: -1px 2px; }
+  28% { translate: 2px -4px; }
+  34% { translate: 0 2px; }
+  40% { translate: 0 0; }
+  52% { translate: 5px -24px; }
+  64% { translate: 0 2px; }
+  76% { translate: 5px -24px; }
+  88% { translate: 0 0; }
+  100% { translate: -46px 92px; }
+}
+.office-render [data-object="washer"].washer-stay {
+  animation: washer-in2 1.2s ease-out both, washer-write 0.5s 1.3s ease-in-out 3, washer-wipe 1.5s 2.9s ease-in-out infinite;
+}
+@keyframes washer-write {
+  0%, 100% { translate: 0 0; }
+  50% { translate: 2px -5px; }
+}
+
+/* Удавы в полосах */
+.fx-snakes {
+  position: fixed;
+  inset: 0;
+  z-index: 5;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+.fx-snakes.on {
+  opacity: 1;
+}
+.fx-snakes img {
+  position: fixed;
+  width: auto;
+}

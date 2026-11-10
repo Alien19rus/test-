@@ -61,7 +61,7 @@ sub('"data-object":"washer",className:"absolute h-[147.635px] left-[-37px] top-[
 # после клика телефон моргает диодами и гаснет, у принтера выезжает лист
 sub('function On(v,r){return(v.confirmedUntil[r]??0)>v.visualTime?r==="printer"?"after click":"Default":"active"}',
     'function On(v,r){const c=(v.confirmedUntil[r]??0)-v.visualTime;'
-    'return c>0?r==="printer"?"after click":r==="phone"&&Math.floor(c/.11)%2===0?"active":"Default"'
+    'return c>0?r==="phone"&&Math.floor(c/.11)%2===0?"active":"Default"'
     ':v.active.has(r)?"active":"Default"}')
 sub('.map(([q])=>q).join(",")}`',
     '.map(([q])=>q).join(",")}|${[...O.active].join()}|'
@@ -83,6 +83,22 @@ sub('children:r==="день"?s.jsx(Px,{}):r==="вечер"?s.jsx(ch,{}):r==="п�
 # освещение кабинета — так же, слоями
 sub('s.jsx(zx,{propValue:r,className:"-translate-x-1/2 -translate-y-1/2 absolute h-[402px] left-1/2 mix-blend-soft-light opacity-40 overflow-clip top-1/2 w-[874px]"})',
     '["утро","день","вечер","поздний вечер"].map((k,i)=>s.jsx(zx,{propValue:k,className:"-translate-x-1/2 -translate-y-1/2 absolute h-[402px] left-1/2 mix-blend-soft-light overflow-clip top-1/2 w-[874px] fx-light"+(k===r?(i===3?" fx-on-80":" fx-on-40"):"")},"l"+i))')
+
+# принтер: после гашения лист плавно выезжает в лоток и остаётся там
+sub('this.confirmedUntil[r]=this.visualTime+(r==="printer"?1.2:.7)',
+    'this.confirmedUntil[r]=this.visualTime+(r==="printer"?1.2:.7),r==="printer"&&(this.printed=(this.printed||0)+1)')
+sub('children:s.jsx(gx,{state:On(o,"printer"),className:"relative size-full"})',
+    'children:[s.jsx(gx,{state:On(o,"printer"),className:"relative size-full"},"p"),'
+    'o.printed>0&&s.jsx("div",{className:"fx-sheet",children:s.jsx("img",{alt:"",src:xx})},"s"+o.printed)]')
+# мойщик: сначала пишет «БЕГИТЕ ГЛУПЦЫ», потом моет; зона клика — и скребок, и надпись
+sub('O.found.has("washer")&&s.jsxs("div",{className:"window-message",',
+    '(O.found.has("washer")||O.washerVisible)&&s.jsxs("div",{className:"window-message"+'
+    '(O.found.has("washer")?" kept":O.elapsed<100?" writing-pass":" writing-stay"),')
+sub('{id:"washer",label:"Мойщик окон",x:8,y:183,w:60,h:132}',
+    '{id:"washer",label:"Мойщик окон",x:0,y:150,w:72,h:170}')
+# в окне находки надпись читается нормально, не зеркально
+sub('"-scale-x-100 flex-none h-[hypot(9.70461cqw,72.1583cqh)] rotate-[-11.51deg]',
+    '"flex-none h-[hypot(9.70461cqw,72.1583cqh)] rotate-[11.51deg]')
 
 css += open(os.path.join(ROOT, "tools", "fx.css"), encoding="utf8").read()
 open(os.path.join(A, "game.js"), "w", encoding="utf8").write(js)
